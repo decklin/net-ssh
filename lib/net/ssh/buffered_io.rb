@@ -62,9 +62,14 @@ module Net; module SSH
     # if no data was available to be read.
     def fill(n=8192)
       input.consume!
-      data = recv(n)
-      debug { "read #{data.length} bytes" }
-      input.append(data)
+      begin
+        data = recv(n)
+        debug { "read #{data.length} bytes" }
+        input.append(data)
+      rescue => e
+        data = ''
+        debug { "failed to read, #{e}" }
+      end
       return data.length
     end
 
