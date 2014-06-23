@@ -1,4 +1,4 @@
-# coding: UTF-8
+# coding: utf-8
 #
 # Also in your terminal environment run:
 #   $ export LANG=en_US.UTF-8
@@ -41,14 +41,14 @@ begin
 
     s.license = "MIT"
 
-    unless ENV['NET_SSH_NOKEY']
-      signing_key = File.join('/mnt/gem/', 'net-ssh-private_key.pem')
-      s.signing_key = File.join('/mnt/gem/', 'net-ssh-private_key.pem')
-      s.cert_chain  = ['net-ssh-public_cert.pem']
-      unless (Rake.application.top_level_tasks & ['build','install']).empty?
-        raise "No key found at #{signing_key} for signing, use rake <taskname> NET_SSH_NOKEY=1 to build without key" unless File.exist?(signing_key)
-      end
-    end
+    # unless ENV['NET_SSH_NOKEY']
+    #   signing_key = File.join('/mnt/gem/', 'net-ssh-private_key.pem')
+    #   s.signing_key = File.join('/mnt/gem/', 'net-ssh-private_key.pem')
+    #   s.cert_chain  = ['net-ssh-public_cert.pem']
+    #   unless (Rake.application.top_level_tasks & ['build','install']).empty?
+    #     raise "No key found at #{signing_key} for signing, use rake <taskname> NET_SSH_NOKEY=1 to build without key" unless File.exist?(signing_key)
+    #   end
+    # end
   end
   Jeweler::RubygemsDotOrgTasks.new
 rescue LoadError
